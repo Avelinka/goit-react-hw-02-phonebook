@@ -20,14 +20,14 @@ const сontactSchema = Yup.object().shape({
     .trim()
     .matches(
       /^[a-zA-Zа-яА-Я' -]+$/,
-      'Name may contain only letters, apostrophe, dash and spaces'
+      'Name may contain only letters, apostrophe, dash and spaces. For example Jane Dou'
     )
     .required('Required'),
   number: Yup.string()
     .trim()
     .matches(
       /^[0-9]{3}-[0-9]{2}-[0-9]{2}$/,
-      'Please enter a valid phone number, for example, 111-11-11'
+      'Please enter a valid phone number. For example 111-11-11'
     )
     .required('Required'),
 });
@@ -51,13 +51,7 @@ export const ContactForm = ({ onAddContact }) => {
             <BsFillPersonFill size="18" />
             Name
           </LabelWrap>
-          <Field
-            type="text"
-            name="name"
-            placeholder="Jane Doe"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
+          <Field type="text" name="name" placeholder="Jane Doe" required />
           <ErrorMessage name="name" component="span" />
         </Label>
         <Label htmlFor="number">
@@ -65,13 +59,7 @@ export const ContactForm = ({ onAddContact }) => {
             <BsTelephoneFill size="16" />
             Number
           </LabelWrap>
-          <Field
-            type="tel"
-            name="number"
-            placeholder="111-11-11"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
+          <Field type="tel" name="number" placeholder="111-11-11" required />
           <ErrorMessage name="number" component="span" />
         </Label>
         <AddBtn type="submit">
